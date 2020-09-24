@@ -1,0 +1,3 @@
+[[:head [:title {} "TIL"]]
+        [:script {} "til.js"]
+ [:body :content]]

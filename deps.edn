@@ -1,0 +1,15 @@
+{:aliases {:native-image
+           {:main-opts ["-m clj.native-image tiler.core"
+                        "--initialize-at-build-time"
+                        ;; optional native image name override
+                        "--no-fallback"
+                        "-H:Name=tiler"]
+            :jvm-opts ["-Dclojure.compiler.direct-linking=true"]
+            :extra-deps
+            {clj.native-image/clj.native-image
+             {:git/url "https://github.com/taylorwood/clj.native-image.git"
+              :sha "7708e7fd4572459c81f6a6b8e44c96f41cdd92d4"}}}}
+ :deps {
+   org.clojure/data.json {:mvn/version "1.0.0"}
+   hiccup                {:mvn/version "1.0.5"}
+   instaparse            {:mvn/version "1.4.10"}}}

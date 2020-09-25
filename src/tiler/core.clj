@@ -4,14 +4,20 @@
             [hiccup.page :refer [html5]]
             [instaparse.core :as insta]
             [clojure.data.json :as json]
-            [clojure.java.io :refer [file]]))
+            [clojure.java.io :refer [file]]
+            [tiler.markdown.parser :refer [parse]]))
 
 (set! *warn-on-reflection* true)
 
 (defn html-page [elements]
   (html5
-    [:head [:title {} "TIL"]]
-    [:body elements]))
+   [:head 
+    [:meta {:charset "utf-8"}]
+    [:meta {:name "viewport" :content "width=device-width, initial-scale=1"}]
+    [:title "TIL @hatemogi"]
+    [:link {:rel "stylesheet" :href "https://cdn.jsdelivr.net/npm/bulma@0.9.0/css/bulma.min.css"}]]
+   [:body 
+    [:section {:class "section"} [:div {:class "container"} elements]]]))
 
 (defn layout [elements]
   (list [:nav "navigation"]

@@ -2,7 +2,7 @@
   (:require [instaparse.core :as insta]))
 
 (def ^{:doc "헤더와 본문을 분리"}
-  parse
+  parser
   (insta/parser 
    "문서   :=  (헤더 본문) / 본문
     헤더   :=  <'---' LF> (ANYS LF)+ <'---' LF>
@@ -20,8 +20,8 @@
               r))
           {}
           tail))
-          
-;; (->map (parse "---\nasdfasdf\nasdfasdf\n---\nasdf\n"))
-;; (->map (parse ""))
 
-
+(defn parse 
+  "마크다운 텍스트 헤더와 본문 문자열로 분리"
+  [text]
+  (->map (parser text)))

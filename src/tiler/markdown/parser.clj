@@ -1,5 +1,6 @@
 (ns tiler.markdown.parser
   (:require [instaparse.core :as insta]
+            [tiler.markdown.meta :as meta]
             [tiler.markdown.block :as block]
             [tiler.markdown.span :as span]))
 

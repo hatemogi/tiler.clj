@@ -1,6 +1,6 @@
-(ns tiler.markdown.meta-test
+(ns tiler.md.meta-test
   (:require [clojure.test :refer [testing is deftest]]
-            [tiler.markdown.meta :as meta]))
+            [tiler.md.meta :as meta]))
 
 (deftest meta-parse
   (testing "마크다운 문서 헤더 분리"

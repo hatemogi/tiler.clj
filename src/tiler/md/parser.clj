@@ -1,8 +1,8 @@
-(ns tiler.markdown.parser
+(ns tiler.md.parser
   (:require [instaparse.core :as insta]
-            [tiler.markdown.meta :as meta]
-            [tiler.markdown.block :as block]
-            [tiler.markdown.span :as span]))
+            [tiler.md.meta :as meta]
+            [tiler.md.block :as block]
+            [tiler.md.span :as span]))
 
 (defn- make-str-end-with-LF [text]
   (if (= \newline (last text))
@@ -34,4 +34,3 @@
   (if-let [e (extract-first elements keyword)]
     (apply str (rest e))
     nil))
-

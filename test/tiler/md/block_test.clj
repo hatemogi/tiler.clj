@@ -1,6 +1,6 @@
-(ns tiler.markdown.block-test
+(ns tiler.md.block-test
   (:require [clojure.test :refer [testing is deftest]]
-            [tiler.markdown.block :as block]))
+            [tiler.md.block :as block]))
 
 (deftest block-parse
   (testing "구조분석"

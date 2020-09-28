@@ -1,4 +1,4 @@
-(ns tiler.markdown.meta
+(ns tiler.md.meta
   (:require [instaparse.core :as insta]))
 
 (def ^{:doc "헤더와 본문을 분리"}

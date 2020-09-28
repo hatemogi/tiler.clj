@@ -1,4 +1,4 @@
-(ns tiler.markdown.block
+(ns tiler.md.block
   (:require [instaparse.core :as insta]))
 
 (def parse

@@ -1,6 +1,5 @@
 (ns tiler.markdown.block
-  (:require [instaparse.core :as insta]) 
-  (:use [clojure.test]))
+  (:require [instaparse.core :as insta]))
 
 (def parse
   (insta/parser
@@ -48,6 +47,3 @@
     <LF>         := '\\n'
     <숫자>       := #'[0-9]'
    "))
-
-;;(testing "구조분석"
-;;  (is (= (parse "테스트\n") [:문서 [:문단 [:문장 "테스트"]]])))

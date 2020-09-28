@@ -9,15 +9,18 @@
     text
     (str text "\n")))
 
-(defn parse [text]
-  (let [문장분석 span/parse]
-    (->> text
-         make-str-end-with-LF
-         block/parse
-         (insta/transform {:문장 문장분석})
-         (insta/transform {:링크텍스트 문장분석}))))
+(defn parse
+  "텍스트에서 헤더를 추출하고, 본문은 마크다운 분석"
+  [text]
+  (let [문장분석 span/parse
+        헤더본문 (-> text make-str-end-with-LF meta/parse)
+        본문     (:본문 헤더본문)]
+    (->> 본문
+     block/parse
+     (insta/transform {:문장 문장분석})
+     (insta/transform {:링크텍스트 문장분석}))))
 
-(parse "---\nasdfasfd\n---")
+(parse "---\nasdfasfd\n---\n#  안녕하세요")
 
 (defn ->hiccup [tree]
   (insta/transform {:큰제목 :h1} tree))

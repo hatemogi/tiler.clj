@@ -1,5 +1,6 @@
 (ns tiler.md.meta
-  (:require [instaparse.core :as insta]))
+  (:require [instaparse.core :as insta]
+            [clojure.string :refer [trim]]))
 
 (def ^{:doc "헤더와 본문을 분리"}
   parser
@@ -12,16 +13,22 @@
    "))
   
 (defn ->map [[head & tail]]
-  (assert (= :문서 head))
-  (reduce (fn [r [x & xs]]
-            (case x
-              :헤더 (assoc r :헤더 (apply str xs))
-              :본문 (assoc r :본문 (apply str xs))
-              r))
-          {}
-          tail))
+  (let [parse-header 
+        (fn [xs]
+          (try (-> (apply str xs) trim read-string) 
+            (catch Throwable _ {})))]
+    (assert (= :문서 head))
+    (reduce (fn [r [x & xs]]
+              (case x
+                :헤더 (assoc r :헤더 (parse-header xs))
+                :본문 (assoc r :본문 (apply str xs))
+                r))
+            {}
+            tail)))
 
 (defn parse 
-  "마크다운 텍스트 헤더와 본문 문자열로 분리"
+  "마크다운 텍스트를 헤더 맵과 본문 문자열로 분리."
   [text]
-  (->map (parser text)))
+  (->> (parser text)
+       ->map 
+       (merge {:헤더 {} :본문 ""})))

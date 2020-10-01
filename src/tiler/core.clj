@@ -5,7 +5,7 @@
             [instaparse.core :as insta]
             [clojure.data.json :as json]
             [clojure.java.io :refer [file]]
-            [tiler.markdown.parser :refer [parse]]))
+            [tiler.md.parser :refer [parse]]))
 
 (set! *warn-on-reflection* true)
 

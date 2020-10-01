@@ -1,4 +1,5 @@
 (ns tiler.md.meta
+  "마크다운 텍스트의 헤더와 본문을 분리해서 헤더는 맵으로 준비"
   (:require [instaparse.core :as insta]
             [clojure.string :refer [trim]]))
 
@@ -27,8 +28,7 @@
             tail)))
 
 (defn parse 
-  "마크다운 텍스트를 헤더 맵과 본문 문자열로 분리."
+  "마크다운 텍스트 헤더 맵과 본문 문자열로 분리"
   [text]
-  (->> (parser text)
-       ->map 
-       (merge {:헤더 {} :본문 ""})))
+  (-> text parser ->map 
+      (update :헤더 (fnil read-string "{}"))))

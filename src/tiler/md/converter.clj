@@ -36,10 +36,3 @@
                         [:code {} (extract-str elements :소스내용)]]
         elements)
       :else elements)))
-
-(->hiccup [:문서 
-           [:제목 {} "123"] 
-           [:일반목록 [:항목 "아이템1"]]
-           [:소스코드 
-            [:소스헤더 "python https://gist/abc"]
-            [:소스내용 "def a():\n  return 3"]]])

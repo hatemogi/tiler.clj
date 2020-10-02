@@ -24,11 +24,10 @@
                 :헤더 (assoc r :헤더 (parse-header xs))
                 :본문 (assoc r :본문 (apply str xs))
                 r))
-            {}
+            {:헤더 {} :본문 ""}
             tail)))
 
 (defn parse 
   "마크다운 텍스트 헤더 맵과 본문 문자열로 분리"
   [text]
-  (-> text parser ->map 
-      (update :헤더 (fnil read-string "{}"))))
+  (->map (parser text)))

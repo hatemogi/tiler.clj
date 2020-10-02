@@ -7,6 +7,5 @@
     (is (= {:tags [] :title "문서 제목"}
            (-> (slurp "res/fixture/sample.md")
                meta/parse
-               :헤더
-               read-string)))
-    (is (= {} (-> "---abc---\n" meta/parse :헤더 read-string)))))
+               :헤더)))
+    (is (= {} (-> "---abc---\n" meta/parse :헤더)))))

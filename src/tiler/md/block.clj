@@ -48,4 +48,3 @@
     <숫자>       := #'[0-9]'
    "))
 
-(parse "```python http://asdfasdf.com\ndef ab\n```\n")
